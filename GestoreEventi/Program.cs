@@ -2,17 +2,17 @@
 using GestoreEventi;
 Console.WriteLine("Hello, World!");
 
-Console.WriteLine("ciao caro vuoi inserire un nuovo evento? si/no");
+Console.WriteLine("ciao, vuoi inserire un nuovo evento? si/no");
 string risposta = Console.ReadLine();
 if (risposta == "si")
 {
-    Console.WriteLine("ottimo, qual è il titolo?");
+    Console.Write("inserisci il nome dell' evento: ");
     string titolo = Console.ReadLine();
-    Console.WriteLine("a quale data corrisponde?");
+    Console.Write("inserisci la data dell' evento (gg/mm/yyyy): ");
     DateTime data = DateTime.Parse(Console.ReadLine());
-    Console.WriteLine("inserisci il numero di posti totale");
+    Console.Write("inserisci il numero di posti totali: ");
     int numerodipostiTot = int.Parse(Console.ReadLine());
-    Console.WriteLine("quanti posti vuoi prenotare?");
+    Console.Write("quanti posti vuoi prenotare? ");
     int postiPrenotati = int.Parse(Console.ReadLine());
 
     Evento Nuovoevento = new Evento(titolo, data, numerodipostiTot);
@@ -59,11 +59,11 @@ if (risposta == "si")
     
    for(int i = 0; i < postiPrenotati; i++)
     {
-        Console.WriteLine("vuoi disdire posti? (si/no) ");
+        Console.Write("vuoi disdire posti? (si/no) ");
         string risposta2 = Console.ReadLine();
         if(risposta2 == "si" )
         {
-            Console.WriteLine("indica il numero di posti da disdire: ");
+            Console.Write("indica il numero di posti da disdire: ");
             int postiDaDisdire = int.Parse(Console.ReadLine());
             try
             {
@@ -123,6 +123,10 @@ for (int i = 1; i < NuomeroDiEventi + 1; i++)
 }
 Console.WriteLine(NuovoProgrammaEventi.NumeroEventi());
     NuovoProgrammaEventi.stampaLista();
+Console.Write("inserisci una data per sapere che eventi ci saranno (gg/mm/yyyy): ");
+DateTime date = DateTime.Parse(Console.ReadLine());
+NuovoProgrammaEventi.listaEventi(date);
+
 //NuovoProgrammaEventi.Clear();
 //NuovoProgrammaEventi.stampaLista();
 

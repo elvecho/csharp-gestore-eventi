@@ -44,6 +44,19 @@ namespace GestoreEventi
         {
             eventi.Clear();
         }
-
+        public void listaEventi(DateTime data)
+        {
+          foreach(Evento Evento in eventi)
+            {
+                if(Evento.getdata() == data)
+                {
+                    Console.WriteLine(Evento.ToString());
+                }
+            }
+               
+            }
+          
+        }
+      
     }
-}
+
