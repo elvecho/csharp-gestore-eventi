@@ -22,11 +22,17 @@ namespace GestoreEventi
         }
         public void stampaLista()
         {
+            Console.WriteLine("ecco il tuo programma eventi: ");
+            Console.WriteLine(Titolo);
             foreach (Evento EventoNellaLista in eventi)
             {
                 Console.WriteLine(EventoNellaLista.ToString());
             }
             
+        }
+        public string getTitolo()
+        {
+            return Titolo;
         }
 
     }

@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace GestoreEventi
 {
-    internal class Evento
+    internal class Evento : ProgrammaEventi
     {
         private string titolo;
         private DateTime data;
         private int capienzaMax;
         private int postiPrenotati;
 
-        public Evento(string titolo, DateTime data, int capienzaMAx)
+        public Evento(string titolo, DateTime data, int capienzaMAx) : base(titolo)
         {
             this.titolo = titolo;
             this.data = data;
@@ -79,8 +79,8 @@ namespace GestoreEventi
         {
             data.ToString("dd/MM/yyyy");
             string rappresentazioneInStringa = "";
-            rappresentazioneInStringa += "---- evento ---- \n";
-            rappresentazioneInStringa += "data: " + this.data + "titolo: " + this.titolo;
+           
+            rappresentazioneInStringa += data.ToString("dd/MM/yyyy")+ " " + "titolo: " + this.titolo;
             return rappresentazioneInStringa;
 
         }

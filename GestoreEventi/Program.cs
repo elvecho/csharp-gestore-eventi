@@ -2,7 +2,7 @@
 using GestoreEventi;
 Console.WriteLine("Hello, World!");
 
-Console.WriteLine("ciao caro vuoi inserire un nuovo evento? si/no");
+/*Console.WriteLine("ciao caro vuoi inserire un nuovo evento? si/no");
 string risposta = Console.ReadLine();
 if (risposta == "si")
 {
@@ -44,6 +44,26 @@ Nuovoevento.stampaPosti();
 else
 {
     Console.WriteLine("ok va bene!");
+} */
+
+Console.WriteLine("inserisci il nome del tuo programma eventi: ");
+string nome = Console.ReadLine();
+Console.WriteLine("inserisci quanti eventi vuoi aggiungere");
+int NuomeroDiEventi = int.Parse(Console.ReadLine());
+ProgrammaEventi NuovoProgrammaEventi = new ProgrammaEventi(nome);
+
+for(int i = 1; i < NuomeroDiEventi +1; i++)
+{
+    Console.WriteLine("inserisci il nome del " + i + "° evento: ");
+    string nomeEvento = Console.ReadLine();
+    Console.WriteLine("inserisci la data dell' evento (gg/mm/yyyy): ");
+    DateTime data = DateTime.Parse(Console.ReadLine());
+    Console.WriteLine("inserisci il numero di posti totali: ");
+    int postitotali = int.Parse(Console.ReadLine());
+
+    Evento Nuovoevento = new Evento(nomeEvento, data, postitotali);
+    NuovoProgrammaEventi.AggiungiEvento(Nuovoevento);
 }
+NuovoProgrammaEventi.stampaLista();
 
 
