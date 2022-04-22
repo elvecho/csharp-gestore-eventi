@@ -26,15 +26,16 @@ namespace GestoreEventi
         }
         public DateTime getdata()
         {
+           
             return data;
         }
         public string setTitolo(string nuovotitolo)
         {
             return nuovotitolo;
         }
-        public DateTime setData(DateTime nuovadata)
+        public DateTime SetData(DateTime nuovadata)
         {
-            return nuovadata;
+           return nuovadata;
         }
         public int GetCapienzaMax()
         {
@@ -45,30 +46,48 @@ namespace GestoreEventi
             return postiPrenotati;
         }
         //metodi
-        public void AggiungiPosto(int quantitàDiPostiDaAggiungere)
+        public void AggiungiPosto(int quantitàDiPostiDaAggiungere, DateTime dataevento)
+
         {
-            if(postiPrenotati + quantitàDiPostiDaAggiungere > capienzaMax)
+           DateTime oraAttuale = DateTime.Now;
+            if(postiPrenotati + quantitàDiPostiDaAggiungere > capienzaMax ^ oraAttuale < dataevento)
             {
-                Console.WriteLine("mi spiace ma non ci sono più posti disponibili");
+                Console.WriteLine("mi spiace ma non ci sono più posti disponibili o la data non è corretta");
             }
             else
             {
                 postiPrenotati = postiPrenotati + quantitàDiPostiDaAggiungere;
                 Console.WriteLine("i tuoi posti sono stati aggiunti");
+                Console.WriteLine("numero di posti prenotati - " + postiPrenotati);
             }    
         }
-        public void DisdiciPosti(int quantitàDiPostiDaDisdire)
+        public void DisdiciPosti(int quantitàDiPostiDaDisdire,  DateTime dataevento)
         {
-            if(postiPrenotati - quantitàDiPostiDaDisdire < 0)
+            DateTime oraAttuale = DateTime.Now;
+            if(postiPrenotati - quantitàDiPostiDaDisdire < 0 ^ oraAttuale < dataevento)
             {
-                Console.WriteLine("stai disdicendo troppi posti");
+                Console.WriteLine("stai disdicendo troppi posti o la data non è corretta");
             }
             else
             {
                 postiPrenotati = postiPrenotati - quantitàDiPostiDaDisdire;
                 Console.WriteLine("hai disdetto correttamente i tuoi posti");
+                Console.WriteLine("numero di posti prenotati: " + postiPrenotati);
             }
         }
+        public virtual string ToString()
+        {
+            data.ToString("dd/MM/yyyy");
+            string rappresentazioneInStringa = "";
+            rappresentazioneInStringa += "---- evento ---- \n";
+            rappresentazioneInStringa += "data: " + this.data + "titolo: " + this.titolo;
+            return rappresentazioneInStringa;
 
+        }
+        public void stampaPosti()
+        {
+           
+            Console.WriteLine("numero di posti disponibili - " + (capienzaMax - postiPrenotati));
+        }
     }
 }
