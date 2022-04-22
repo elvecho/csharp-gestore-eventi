@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using GestoreEventi;
 Console.WriteLine("Hello, World!");
-/*
+
 Console.WriteLine("ciao caro vuoi inserire un nuovo evento? si/no");
 string risposta = Console.ReadLine();
 if (risposta == "si")
@@ -87,7 +87,7 @@ if (risposta == "si")
 else
 {
     Console.WriteLine("ok va bene!");
-} */
+} 
 
 Console.WriteLine("inserisci il nome del tuo programma eventi: ");
 string nome = Console.ReadLine();
