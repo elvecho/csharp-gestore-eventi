@@ -34,6 +34,16 @@ namespace GestoreEventi
         {
             return Titolo;
         }
+       public int NumeroEventi()
+        {
+          int numero = eventi.Count;
+            return numero;
+          }
+
+        public void Clear()
+        {
+            eventi.Clear();
+        }
 
     }
 }

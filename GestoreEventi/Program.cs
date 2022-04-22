@@ -1,8 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using GestoreEventi;
 Console.WriteLine("Hello, World!");
-
-/*Console.WriteLine("ciao caro vuoi inserire un nuovo evento? si/no");
+/*
+Console.WriteLine("ciao caro vuoi inserire un nuovo evento? si/no");
 string risposta = Console.ReadLine();
 if (risposta == "si")
 {
@@ -16,25 +16,68 @@ if (risposta == "si")
     int postiPrenotati = int.Parse(Console.ReadLine());
 
     Evento Nuovoevento = new Evento(titolo, data, numerodipostiTot);
+    try
+    {
+        Nuovoevento.SetData(data);
+    }
+    catch
+    {
+        Console.WriteLine("la data è nel passato");
+    }
+    try
+    {
+        Nuovoevento.setTitolo(titolo);
+    }
+    catch
+    {
+        Console.WriteLine("il titolo non può essere vuoto");
+    }
+    try
+    {
+        Nuovoevento.setCapienzaMax(numerodipostiTot);
+        try
+        {
+            Nuovoevento.AggiungiPosto(postiPrenotati, data);
+        }
+        catch
+        {
+            Console.WriteLine("stai prenotando troppi posti o la data dell evento è passata");
+            postiPrenotati = 0;
+        } 
+       
+    }
+    catch
+    {
+        postiPrenotati= 0;
+       
+        Console.WriteLine("il numero non può essere negativo");
+    }
+        
     Nuovoevento.ToString();
-    Nuovoevento.AggiungiPosto(postiPrenotati, data);
-Nuovoevento.stampaPosti();
-    bool trovato = false;
+    
+
+    
    for(int i = 0; i < postiPrenotati; i++)
     {
         Console.WriteLine("vuoi disdire posti? (si/no) ");
         string risposta2 = Console.ReadLine();
-        if(risposta2 == "si")
+        if(risposta2 == "si" )
         {
             Console.WriteLine("indica il numero di posti da disdire: ");
             int postiDaDisdire = int.Parse(Console.ReadLine());
-            Nuovoevento.DisdiciPosti(postiDaDisdire, data);
-            Nuovoevento.stampaPosti();
+            try
+            {
+                Nuovoevento.DisdiciPosti(postiDaDisdire, data);
+            }
+            catch
+            {
+                Console.WriteLine("stai disdicendo troppi posti o la data dell evento è passata ");
+            }
         }
         else
         {
             Console.WriteLine("ok va bene!");
-            Nuovoevento.stampaPosti();
+            
             break;
 
         }
@@ -52,7 +95,7 @@ Console.WriteLine("inserisci quanti eventi vuoi aggiungere");
 int NuomeroDiEventi = int.Parse(Console.ReadLine());
 ProgrammaEventi NuovoProgrammaEventi = new ProgrammaEventi(nome);
 
-for(int i = 1; i < NuomeroDiEventi +1; i++)
+for (int i = 1; i < NuomeroDiEventi + 1; i++)
 {
     Console.WriteLine("inserisci il nome del " + i + "° evento: ");
     string nomeEvento = Console.ReadLine();
@@ -62,8 +105,26 @@ for(int i = 1; i < NuomeroDiEventi +1; i++)
     int postitotali = int.Parse(Console.ReadLine());
 
     Evento Nuovoevento = new Evento(nomeEvento, data, postitotali);
-    NuovoProgrammaEventi.AggiungiEvento(Nuovoevento);
+    try
+    {
+        Nuovoevento.SetData(data);
+        NuovoProgrammaEventi.AggiungiEvento(Nuovoevento);
+    }
+    catch
+    {
+
+        {
+            i--;
+            Console.WriteLine("la data è nel passato");
+        }
+
+    }
+    
 }
-NuovoProgrammaEventi.stampaLista();
+Console.WriteLine(NuovoProgrammaEventi.NumeroEventi());
+    NuovoProgrammaEventi.stampaLista();
+//NuovoProgrammaEventi.Clear();
+//NuovoProgrammaEventi.stampaLista();
+
 
 
